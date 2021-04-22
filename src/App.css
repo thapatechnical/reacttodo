@@ -73,6 +73,9 @@ input:focus {
   box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
 }
 
+/*  Please Subscribe to ThapaTechnical Youtube Channel
+/* Click Here: https://www.youtube.com/thapatechnical  */
+
 .fa {
   margin-left: -2.5rem;
   cursor: pointer;
@@ -134,6 +137,9 @@ input:focus {
   transition: color 0.15s linear;
   font-size: 2rem;
 }
+
+/*  Please Subscribe to ThapaTechnical Youtube Channel
+/* Click Here: https://www.youtube.com/thapatechnical  */
 
 .eachItem:hover .fa-trash-alt {
   color: rgb(214, 47, 61);

@@ -17,7 +17,10 @@ const Todo = () => {
         
     }
 
-    // delete the items 
+    //TODO Please Subscribe to ThapaTechnical Youtube Channel
+    //TODO Click Here: https://www.youtube.com/thapatechnical
+    
+    // delete the items
 
     const deleteItem = (id) => {
         console.log(id);
@@ -65,7 +68,9 @@ const Todo = () => {
                         }
                        
                     </div>
-
+//TODO Please Subscribe to ThapaTechnical Youtube Channel
+//TODO Click Here: https://www.youtube.com/thapatechnical
+                
                     {/* clear all button  */}
                     <div className="showItems">
                         <button className="btn effect04" data-sm-link-text="Remove All" onClick={removeAll}><span> CHECK LIST </span> </button>
