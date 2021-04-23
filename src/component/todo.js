@@ -1,11 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import todo from "../images/todo.svg";
 import "../App.css"
+
+
+// to get the data from LS
+
+const getLocalItmes = () => {
+    let list = localStorage.getItem('lists');
+    console.log(list);
+
+    if (list) {
+        return JSON.parse(localStorage.getItem('lists'));
+    } else {
+        return [];
+    }
+}
 
 const Todo = () => {
 
     const [inputData, setInputData] = useState('');
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(getLocalItmes());
 
     const addItem = () => {
         if (!inputData) {
@@ -14,14 +28,10 @@ const Todo = () => {
             setItems([...items, inputData]);
             setInputData('')
         }
-        
     }
 
-    //TODO Please Subscribe to ThapaTechnical Youtube Channel
-    //TODO Click Here: https://www.youtube.com/thapatechnical
     
     // delete the items
-
     const deleteItem = (id) => {
         console.log(id);
         const updateditems = items.filter((elem, ind) => {
@@ -35,6 +45,11 @@ const Todo = () => {
     const removeAll = () => {
          setItems([]);
     }
+
+    // add data to localStorage
+    useEffect(() => {
+       localStorage.setItem('lists', JSON.stringify(items))
+    }, [items]);
 
     return (
         <>
@@ -68,8 +83,6 @@ const Todo = () => {
                         }
                        
                     </div>
-//TODO Please Subscribe to ThapaTechnical Youtube Channel
-//TODO Click Here: https://www.youtube.com/thapatechnical
                 
                     {/* clear all button  */}
                     <div className="showItems">
@@ -82,3 +95,7 @@ const Todo = () => {
 }
 
 export default Todo
+
+
+ //TODO Please Subscribe to ThapaTechnical Youtube Channel
+ //TODO Click Here: https://www.youtube.com/thapatechnical

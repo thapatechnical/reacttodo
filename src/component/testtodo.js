@@ -1,12 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "../App.css";
 import todo from "../images/todo.svg";
+
+
+const getLocalItems = () => {
+    let list = localStorage.getItem('lists');
+    console.log(list);
+    if (list) {
+        console.log(JSON.parse(localStorage.getItem('lists')));
+        return JSON.parse(localStorage.getItem('lists'));
+    } else {
+        return []
+    }
+};
 
 const Testtodo = () => {
 
     const [inputData, setInputData] = useState('');
 
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(getLocalItems());
 
     const addItem = () => {
         if (!inputData) {
@@ -32,6 +44,12 @@ const Testtodo = () => {
         setItems([]);
     }
 
+    // add data to localStorage
+    useEffect(() => {
+        // localStorage.setItem('thapaName', 'vinod');
+        localStorage.setItem('lists', JSON.stringify(items));
+    }, [items]);
+
     return (
        <>
             <div className="main-div">
@@ -55,7 +73,11 @@ const Testtodo = () => {
                                 return (
                                     <div className="eachItem" key={ind}>
                                         <h3> {elem} </h3>
-                                        <i className="far fa-trash-alt add-btn" title="Delete item" onClick={() => deleteItem(ind)}></i>
+                                        <div className='todo-btn'>
+                                            {/* <i className="far fa-edit add-btn" title="Edit item" onClick={() => deleteItem(ind)}></i> */}
+                                            <i className="far fa-trash-alt add-btn" title="Delete item" onClick={() => deleteItem(ind)}></i>
+                                        </div>
+                                       
                                     </div>
                                 )
                             })
@@ -64,7 +86,7 @@ const Testtodo = () => {
                     </div>
 
                     <div className="showItems">
-                        <button class="btn effect04" data-sm-link-text="Remove All" target="_blank" onClick={remvoveAll}><span>CHECK LIST </span></button>
+                        <button className="btn effect04" data-sm-link-text="Remove All" target="_blank" onClick={remvoveAll}><span>CHECK LIST </span></button>
                     </div>
 
                 </div>
